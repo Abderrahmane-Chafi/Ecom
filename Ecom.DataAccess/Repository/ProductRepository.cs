@@ -22,16 +22,23 @@ namespace Ecom.DataAccess.Repository
             if (objFromDb != null)
             {
                 objFromDb.Name = obj.Name;
-                objFromDb.Description = obj.Description;
                 objFromDb.Price = obj.Price;
-                objFromDb.Description = obj.Description;
+                objFromDb.Gender = obj.Gender;
                 objFromDb.CategoryId = obj.CategoryId;
+                objFromDb.BrandId = obj.BrandId;
+                objFromDb.Quantity = obj.Quantity;
+                objFromDb.status = obj.status;
+
+
             }
             if (obj.ImageUrl != null)
             {
                 objFromDb.ImageUrl = obj.ImageUrl;
             }
-
+            if (obj.ImageUrl1 != null)
+            {
+                objFromDb.ImageUrl1 = obj.ImageUrl1;
+            }
         }
     }
 }

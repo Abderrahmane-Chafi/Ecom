@@ -1,0 +1,27 @@
+﻿.grayscale-container {
+    width: 250px; /* Set a fixed width for the containers */
+}
+
+    .grayscale-container img {
+        width: 100%; /* Make sure the images fill the container */
+        filter: grayscale(100%);
+        transition: filter 0.3s;
+    }
+
+    .grayscale-container:hover img {
+        filter: grayscale(0%);
+    }
+
+
+/* Adjust the table width and make it scroll horizontally on smaller screens */
+@media (max-width: 768px) {
+    #tblData {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+
+/* Make the table container responsive */
+#tblData_wrapper {
+    overflow-x: auto;
+}

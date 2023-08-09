@@ -17,16 +17,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Ecom.DataAccess\Ecom.DataAccess.csproj" />
     <ProjectReference Include="..\Ecom.Models\Ecom.Models.csproj" />
     <ProjectReference Include="..\Ecom.Utility\Ecom.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\brands\" />
+    <Folder Include="wwwroot\images\products\" />
   </ItemGroup>
 
 </Project>

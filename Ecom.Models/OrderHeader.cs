@@ -19,17 +19,9 @@ namespace Ecom.Models
 
         [Required]
         public DateTime OderDate { get; set; }
-        public DateTime ShippingDate { get; set; }
+        public DateTime ShippingDate { get; set; } = DateTime.Now;
         public double OrderTotal { get; set; }
         public string? OrderStatus { get; set; }
-        //public string? PaymentStatus { get; set; }
-        public string? TrackingNumber { get; set; }
-        public string? Carrier { get; set; }
-
-        public DateTime PayementDate { get; set; }
-        public DateTime PayementDueDate { get; set; }
-        //public string? SessionId { get; set; }
-        //public string? PayementIntentId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

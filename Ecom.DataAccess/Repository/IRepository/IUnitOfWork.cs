@@ -14,6 +14,10 @@ namespace Ecom.DataAccess.Repository.IRepository
         IApplicationUserRepository ApplicationUser { get; }
         IOrderDetailRepository OrderDetail { get; }
         IOrderHeaderRepository OrderHeader { get; }
+        IBrandRepository Brand { get; }
+        IFeedbackRepository FeedBack { get; }
+        ISizesRepository Sizes { get; }
+        IProductDetailsRepository ProductDetails { get; }
 
         void Save();
     }

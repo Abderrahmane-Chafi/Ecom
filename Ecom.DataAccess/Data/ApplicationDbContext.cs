@@ -13,5 +13,11 @@ namespace Ecom.DataAccess.Data
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<OrderHeader> OrderHeaders { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<Brand> Brand { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Sizes> Sizes { get; set; }
+        public DbSet<ProductDetails> ProductDetails { get; set; }
+
+
     }
 }

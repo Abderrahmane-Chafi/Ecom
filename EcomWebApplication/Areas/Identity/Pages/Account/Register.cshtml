@@ -1,99 +1,80 @@
 ﻿@page
+@using Ecom.Utility;
+
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
-    <div class="col-md-4">
+<div class="row d-flex flex-column align-items-center m-5">
+    <div class="col-md-6 card border border-success p-0">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <div class="card-header d-flex flex-column align-items-center ">
+                <a class="navbar-brand d-flex align-items-center fw-bold text-center mt-2" href="/">
+                    <span class="bs-icon-sm bs-icon-circle bs-icon-info shadow d-flex justify-content-center align-items-center me-2 bs-icon">
+                        <img class="w-100" src="~/images/logo/CasualDad.png" />
+                    </span><span>Casual's Dad</span>
+                </a>
             </div>
-            <div class="form-floating py-2 col-6">
-                <input asp-for="Input.Name" class="form-control" aria-required="true" />
-                <label asp-for="Input.Name"></label>
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
-            </div>
-            <div class="form-floating py-2 col-6">
-                <input asp-for="Input.PhoneNumber" class="form-control" aria-required="true" />
-                <label asp-for="Input.PhoneNumber"></label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-floating py-2 col-6">
-                <input asp-for="Input.StreetAdress" class="form-control" aria-required="true" />
-                <label asp-for="Input.StreetAdress"></label>
-                <span asp-validation-for="Input.StreetAdress" class="text-danger"></span>
-            </div>
-            <div class="form-floating py-2 col-6">
-                <input asp-for="Input.City" class="form-control" aria-required="true" />
-                <label asp-for="Input.City"></label>
-                <span asp-validation-for="Input.City" class="text-danger"></span>
-            </div>
-            <div class="form-floating py-2 col-6">
-                <input asp-for="Input.PostalCode" class="form-control" aria-required="true" />
-                <label asp-for="Input.PostalCode"></label>
-                <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.ConfirmPassword"></label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            @* @if(User.IsInRole(SD.Role_Admin)){*@
-
-            <div class="form-floating py-2 col-6">
-                <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
-                    <option disabled selected>=Select Role=</option>
-                </select>
-            </div>
-            @* }*@
-
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+            <div class="row p-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating my-2 col-6">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                    <label asp-for="Input.Email"></label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating my-2 col-6">
+                    <input asp-for="Input.Name" class="form-control" aria-required="true" />
+                    <label asp-for="Input.Name"></label>
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+                <div class="form-floating my-2 col-6">
+                    <input asp-for="Input.PhoneNumber" class="form-control" aria-required="true" />
+                    <label asp-for="Input.PhoneNumber"></label>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-floating my-2 col-6">
+                    <input asp-for="Input.StreetAdress" class="form-control" aria-required="true" />
+                    <label asp-for="Input.StreetAdress"></label>
+                    <span asp-validation-for="Input.StreetAdress" class="text-danger"></span>
+                </div>
+                <div class="form-floating my-2 col-6">
+                    <input asp-for="Input.City" class="form-control" aria-required="true" />
+                    <label asp-for="Input.City"></label>
+                    <span asp-validation-for="Input.City" class="text-danger"></span>
+                </div>
+                <div class="form-floating my-2 col-6">
+                    <input asp-for="Input.PostalCode" class="form-control" aria-required="true" />
+                    <label asp-for="Input.PostalCode"></label>
+                    <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-floating my-2 col-6">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                    <label asp-for="Input.Password"></label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-floating my-2 col-6">
+                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                @if (User.IsInRole(SD.Role_Admin))
                 {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
+
+                    <div class="form-floating my-2">
+                        <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
+                            <option disabled selected>=Select Role=</option>
+                        </select>
                     </div>
                 }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-success mt-2">Register</button>
+
+            </div>
+            
+
+        </form>
     </div>
+
 </div>
 
 @section Scripts {

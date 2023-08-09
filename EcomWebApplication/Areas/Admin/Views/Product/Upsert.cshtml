@@ -1,0 +1,180 @@
+﻿@model Ecom.Models.ViewModels.ProductVM
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="product.Id" hidden/>
+    <input asp-for="product.ImageUrl" hidden/>
+    <input asp-for="product.ImageUrl1" hidden />
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row">
+                <div class="col-12 pb-2">
+                    <h2 class="text-primary">@(Model.product.Id!=0?"Update": "Create") Product</h2>
+                    <hr />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="product.Name"></label>
+                    <input  asp-for="product.Name" class="form-control"/>
+                    <span asp-validation-for="product.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="product.Price"></label>
+                    <input asp-for="product.Price" class="form-control" />
+                    <span asp-validation-for="product.Price" class="text-danger"></span>
+                </div>
+                 <div class="mb-3">
+                    <label asp-for="product.Quantity"></label>
+                    <input type="number" asp-for="product.Quantity" class="form-control" />
+                    <span asp-validation-for="product.Quantity" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="product.ImageUrl"></label>
+                    <input id="UploadBox" type="file" name="file" class="form-control"/>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="product.ImageUrl1"></label>
+                    <input id="UploadBox1" type="file" name="file1" class="form-control" />
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="product.BrandId"></label>
+                    <select asp-for="product.BrandId" asp-items="@Model.BrandList" class="form-select">
+                        <option disabled selected>==Select Brand==</option>
+                    </select>
+                    <span asp-validation-for="product.CategoryId" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="product.CategoryId"></label>
+                    <select asp-for="product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
+                        <option disabled selected>==Select Category==</option>
+                    </select>
+                    <span asp-validation-for="product.CategoryId" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="product.Gender"></label>
+                    <select asp-for="product.Gender" asp-items="@Model.GenderList" class="form-select">
+                        <option disabled selected>==Select Gender==</option>
+                    </select>
+                    <span asp-validation-for="product.Gender" class="text-danger"></span>
+                </div>
+                @if (Model.product.Id != 0)
+                {
+                    <div class="mb-3 col-6">
+                        <label asp-for="product.status"></label>
+                        <select asp-for="product.status" asp-items="@Model.StatusList" class="form-select">
+                            <option disabled selected>==Select status==</option>
+                        </select>
+                        <span asp-validation-for="product.status" class="text-danger"></span>
+                    </div>
+                }
+                @if (Model.product.Id == 0)
+                {
+                    <div class="mb-3 col-md-6 card border border-primary col-sm-12 p-0">
+                        <div class="card-header w-100">
+                            Sizes
+                        </div>
+
+                        <div class="card-body row">
+                            @foreach (var item in Model.sizes)
+                            {
+                                <div class="col-4">
+                                    <input class="form-check-input" type="checkbox" id="@item.Name" value="true" name="MyCheckboxes_@item.Id">
+                                <label class="form-check-label" style="color:black" for="@item.Name">
+                                    @item.Name
+                                </label>
+                                </div>
+                                
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="mb-3 col-md-6 card border border-primary col-sm-12 p-0">
+                        <div class="card-header w-100">
+                            Sizes
+                        </div>
+
+                        <div class="card-body row">
+                            <!-- Sizes Already Added -->
+                            @foreach (var item in Model.productDetails)
+                            {
+                                <div class="col-4" id="size-@item.Id">
+                                    <p>
+                                        @item.Sizes.Name  <a style="cursor:pointer" onClick="Delete('/Admin/Product/DeleteProductDetail/@item.Id','size-@item.Id', '@item.Sizes.Id', '@item.Sizes.Name')" class="text-danger"><i class="bi bi-trash-fill"></i></a>
+                                    </p>
+                                </div>
+                            }
+                            <hr>
+                            <p><i class="bi bi-plus-circle"></i> Add Sizes</p>
+                            <div id="add-sizes-section" class="row col-12">
+                                @foreach (var item in Model.Othersizes)
+                                {
+                                    <div class="col-4 size-item" id="size-@item.Id">
+                                        <input class="form-check-input" type="checkbox" id="@item.Name" value="true" name="MyCheckboxes_@item.Id">
+                                        <label class="form-check-label" style="color:black" for="@item.Name">
+                                            @item.Name
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                
+                <div class="col-12">
+                    @if (Model.product.Id != 0)
+                    {
+                        <button type="submit" class="btn btn-primary" style="width:150px" >Update</button>
+                    }
+                    else
+                    {
+                        <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
+                    }
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:200px">
+                        Back to list
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+        <div class="col-2 mt-4">
+            <img class="mb-1" src="@Model.product.ImageUrl"
+                style="width: 100%;border-radius:5px;border:1px solid #bbb9b9"/>
+                <img src="@Model.product.ImageUrl1"
+                style="width: 100%;border-radius:5px;border:1px solid #bbb9b9"/>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+    <script>
+        function ValidateInput(){
+            if (document.getElementById("UploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Pleas upload an Image!',
+                });
+                return false;
+            }
+            if (document.getElementById("UploadBox1").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Pleas upload an Image!',
+                });
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script src="~/js/Delete.js"></script>
+
+}
+
+
