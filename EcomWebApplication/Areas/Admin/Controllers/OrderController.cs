@@ -56,12 +56,12 @@ namespace EcomWebApplication.Areas.Admin.Controllers
 			orderHeaderFromDb.City = OrderVM.OrderHeader.City;
 			orderHeaderFromDb.OrderStatus = OrderVM.OrderHeader.OrderStatus;
 			orderHeaderFromDb.PostalCode = OrderVM.OrderHeader.PostalCode;
-			orderHeaderFromDb.ShippingDate = OrderVM.OrderHeader.ShippingDate;
+			orderHeaderFromDb.ShippingDate = DateTime.SpecifyKind(OrderVM.OrderHeader.ShippingDate, DateTimeKind.Utc);
 
-			//Entity Framwork is tracking the entity when we retrieve it
-			//Entity Framwork have an option when you retrieve an entity you can explicitly say that you do not want to track that entiy
-			//If the entity is not tracked then update will not work even if we update properties(without .update)
-			_UnitOfWork.OrderHeader.Update(orderHeaderFromDb);
+            //Entity Framwork is tracking the entity when we retrieve it
+            //Entity Framwork have an option when you retrieve an entity you can explicitly say that you do not want to track that entiy
+            //If the entity is not tracked then update will not work even if we update properties(without .update)
+            _UnitOfWork.OrderHeader.Update(orderHeaderFromDb);
 			_UnitOfWork.Save();
 			TempData["success"] = "Order Details updated successfuly";
 			return RedirectToAction("Details", "Order", new { orderId = orderHeaderFromDb.Id });

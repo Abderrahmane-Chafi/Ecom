@@ -119,9 +119,10 @@ namespace EcomWebApplication.Areas.Customer.Controllers
 			var claim = claimsIDentity.FindFirst(ClaimTypes.NameIdentifier);
 			//Load the shopping cart again :
 			ShoppingCartVM.ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value, includeProperties: "Product");
-			//When order is places we will modify some details in orderHeader
-			ShoppingCartVM.OrderHeader.OderDate = System.DateTime.Now;
-			ShoppingCartVM.OrderHeader.ApplicationUserId = claim.Value;
+            //When order is places we will modify some details in orderHeader
+
+            ShoppingCartVM.OrderHeader.OderDate = DateTime.SpecifyKind(System.DateTime.Now, DateTimeKind.Utc);
+            ShoppingCartVM.OrderHeader.ApplicationUserId = claim.Value;
 			ShoppingCartVM.OrderHeader.OrderStatus = SD.StatusPending;
 
 			//Calculate Order Total

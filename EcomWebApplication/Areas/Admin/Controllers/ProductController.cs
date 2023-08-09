@@ -112,7 +112,7 @@ namespace EcomWebApplication.Areas.Admin.Controllers
                     //Generate new file name
                     string FileName = Guid.NewGuid().ToString();
                     //find the location where the files should be uploaded
-                    var uploads = Path.Combine(wwwRootPath, @"images\products");
+                    var uploads = Path.Combine(wwwRootPath, "images","products");
                     //keep same extension
                     var extension = Path.GetExtension(file.FileName);
 
@@ -120,7 +120,7 @@ namespace EcomWebApplication.Areas.Admin.Controllers
                     if (obj.product.ImageUrl != null)
                     {
                         //old image path
-                        var oldImagePath = Path.Combine(wwwRootPath, obj.product.ImageUrl.TrimStart('\\'));
+                        var oldImagePath = Path.Combine(wwwRootPath, obj.product.ImageUrl.TrimStart('/'));
                         if (System.IO.File.Exists(oldImagePath))
                         {
                             System.IO.File.Delete(oldImagePath);
@@ -133,14 +133,14 @@ namespace EcomWebApplication.Areas.Admin.Controllers
                         file.CopyTo(fileStreams);
                     }
                     //what we will save in the DB
-                    obj.product.ImageUrl = @"\images\products\" + FileName + extension;
+                    obj.product.ImageUrl = "/images/products/" + FileName + extension;
                 }
                 if (file1 != null)
                 {
                     //Generate new file name
                     string FileName = Guid.NewGuid().ToString();
                     //find the location where the files should be uploaded
-                    var uploads = Path.Combine(wwwRootPath, @"images\products");
+                    var uploads = Path.Combine(wwwRootPath, "images","products");
                     //keep same extension
                     var extension = Path.GetExtension(file1.FileName);
 
@@ -148,7 +148,7 @@ namespace EcomWebApplication.Areas.Admin.Controllers
                     if (obj.product.ImageUrl1 != null)
                     {
                         //old image path
-                        var oldImagePath = Path.Combine(wwwRootPath, obj.product.ImageUrl1.TrimStart('\\'));
+                        var oldImagePath = Path.Combine(wwwRootPath, obj.product.ImageUrl1.TrimStart('/'));
                         if (System.IO.File.Exists(oldImagePath))
                         {
                             System.IO.File.Delete(oldImagePath);
@@ -161,7 +161,7 @@ namespace EcomWebApplication.Areas.Admin.Controllers
                         file1.CopyTo(fileStreams);
                     }
                     //what we will save in the DB
-                    obj.product.ImageUrl1 = @"\images\products\" + FileName + extension;
+                    obj.product.ImageUrl1 = "/images/products/" + FileName + extension;
                 }
 
                 if (obj.product.Id == 0)
@@ -240,7 +240,7 @@ namespace EcomWebApplication.Areas.Admin.Controllers
                 return Json(new { success = false, message = "Error while deleting" });
             }
 
-            var oldImagePath = Path.Combine(_hostEnvironment.WebRootPath, Obj.ImageUrl.TrimStart('\\'));
+            var oldImagePath = Path.Combine(_hostEnvironment.WebRootPath, Obj.ImageUrl.TrimStart('/'));
             if (System.IO.File.Exists(oldImagePath))
             {
                 System.IO.File.Delete(oldImagePath);
