@@ -1,9 +1,9 @@
-﻿@model Ecom.Models.Brand
+﻿@model Ecom.Models.Sizes
 
 <form method="post" asp-action="Delete">
     <div class="border p-3 mt-5">
         <div class="row pb-2">
-            <h2 class="text-primary">Delete Category</h2>
+            <h2 class="text-primary">Delete Size</h2>
             <hr />
         </div>
         @*<div asp-validation-summary="All"></div>*@
@@ -12,7 +12,7 @@
             <input asp-for="Name" class="form-control" disabled />
         </div>
         <button type="submit" class="btn btn-danger" style="width:150px">Remove</button>
-        <a asp-controller="Brand" asp-action="Index" class="btn btn-secondary" style="">
+        <a asp-controller="Size" asp-action="Index" class="btn btn-secondary" style="">
             Back to list
         </a>
     </div>

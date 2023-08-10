@@ -1,7 +1,7 @@
 ﻿@model Ecom.Models.Category
 
 <form method="post" asp-action="Delete">
-    <div class="border p-3 mt-4">
+    <div class="border p-3 mt-5">
         <div class="row pb-2">
             <h2 class="text-primary">Delete Category</h2>
             <hr />
@@ -12,7 +12,7 @@
             <input asp-for="Name" class="form-control" disabled />
         </div>
         <button type="submit" class="btn btn-danger" style="width:150px">Remove</button>
-        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="">
             Back to list
         </a>
     </div>
