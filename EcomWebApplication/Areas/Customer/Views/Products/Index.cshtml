@@ -75,7 +75,7 @@
                 @foreach (var item in Model.PagedProducts)
                 {
                     
-                        <div class="col-4 ">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
                             <a  asp-area="Customer" asp-action="Details" asp-route-ProductId="@item.Id">
                                 <div class="row ">
                                     <div class="col-12" style="height:350px">
@@ -89,6 +89,7 @@
                                 </div>
                             </a>
                         </div>
+                       
                     
                 }
             </div>
