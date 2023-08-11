@@ -121,7 +121,7 @@ namespace EcomWebApplication.Areas.Customer.Controllers
 			ShoppingCartVM.ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value, includeProperties: "Product");
             //When order is places we will modify some details in orderHeader
 
-            ShoppingCartVM.OrderHeader.OderDate = DateTime.SpecifyKind(System.DateTime.Now, DateTimeKind.Utc);
+            ShoppingCartVM.OrderHeader.OderDate = DateTime.UtcNow;
             ShoppingCartVM.OrderHeader.ApplicationUserId = claim.Value;
 			ShoppingCartVM.OrderHeader.OrderStatus = SD.StatusPending;
 
