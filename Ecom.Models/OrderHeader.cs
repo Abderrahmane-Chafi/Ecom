@@ -19,7 +19,7 @@ namespace Ecom.Models
 
         [Required]
         public DateTime OderDate { get; set; }
-        public DateTime ShippingDate { get; set; } = DateTime.Now;
+        public DateTime ShippingDate { get; set; }=DateTime.UtcNow;
         public double OrderTotal { get; set; }
         public string? OrderStatus { get; set; }
         [Required]
