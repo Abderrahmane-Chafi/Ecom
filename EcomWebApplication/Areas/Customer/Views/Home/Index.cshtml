@@ -1,22 +1,24 @@
 ﻿@model Ecom.Models.ViewModels.HomeVM
 
-<header class="bg-primary-gradient">
+<a href="https://icons8.com/icon/21224/ratings"></a>
+<a href="https://icons8.com"></a>
+<header class="bg-primary-gradient mb-2">
         <div class="container pt-4 pt-xl-5">
             <div class="row pt-5">
                 <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
                     <div class="text-center">
-                        <p class="fw-bold text-success mb-2">Voted #1</p>
-                    <h4 class="fw-bold">Start shopping now to experience the true essence of casual fashion with us!</h4>
+                    <p class="fw-bold text-success mb-2" data-aos="zoom-in" data-aos-delay="700" data-aos-once="true">Voted #1</p>
+                    <h4 class="fw-bold" data-aos="zoom-in" data-aos-delay="1000" data-aos-once="true">Start shopping now to experience the true essence of casual fashion with us!</h4>
                     </div>
                 </div>
                 <div class="col-12 col-lg-10 mx-auto">
                     <div class="position-relative" style="display: flex;flex-wrap: wrap;justify-content: flex-end;">
-                    <div style="position: relative;flex: 0 0 45%;transform: translate3d(-15%, 35%, 0);"><img class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.8" src="~/images/home/CC3.png" alt="error"></div>
+                    <div style="position: relative;flex: 0 0 45%;transform: translate3d(-15%, 35%, 0);" data-aos="fade-right" data-aos-delay="1500" data-aos-once="true"> <img class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.8" src="~/images/home/C1.png" alt="error"></div>
 
-                    <div style="position: relative;flex: 0 0 45%;transform: translate3d(-5%, 20%, 0);"><img class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.4" src="~/images/home/CC2.png" alt="error"></div>
+                    <div style="position: relative;flex: 0 0 45%;transform: translate3d(-5%, 20%, 0);" data-aos="fade-left" data-aos-delay="1900" data-aos-once="true"><img class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.4" src="~/images/home/C3.png" alt="error"></div>
 
-                    <div style="position: relative;flex: 0 0 45%;transform: translate3d(0%, 0%, 0);"><img class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.4" src="~/images/home/CC1.png" alt="error"></div>
-
+@*                    <div style="position: relative;flex: 0 0 45%;transform: translate3d(0%, 0%, 0);" ><img style="width:1000px"  class="img-fluid" data-bss-parallax="" data-bss-parallax-speed="0.4" src="~/images/home/C2.jpg" alt="error"></div>
+*@
                     </div>
                 </div>
             </div>
@@ -24,11 +26,13 @@
     </header>
     <section class="py-5">
         <div class="container text-center py-5">
-            <p class="mb-4" style="font-size: 1.6rem;">At our store, there's an <span class="text-dark bg-success-subtle bg-success-light p-1"><strong>extensive collection of various brands</strong></span>&nbsp, including:</p>
+            <p data-aos="zoom-in" data-aos-delay="300" data-aos-once="true" class="mb-4" style="font-size: 1.6rem;">At our store, there's an <span class="text-dark bg-success-subtle bg-success-light p-1"><strong>extensive collection of various brands</strong></span>&nbsp, including:</p>
             <div class="row">
                 @foreach (var item in Model.Brands)
                 {
-                <div class="col-4  d-flex align-items-center justify-content-center grayscale-container m-auto">
+                <div data-aos="fade-down"
+                 data-aos-easing="linear"
+                 data-aos-duration="1000" data-aos-delay="400" data-aos-once="true" class="col-4  d-flex align-items-center justify-content-center grayscale-container m-auto">
                         <img style="height:auto;max-width:100%" class="m-3" src="@item.ImageUrl">
                     </div>
                 }
@@ -40,33 +44,42 @@
         <div class="container bg-primary-gradient py-5">
             <div class="row">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <p class="fw-bold text-success mb-2">Our Services</p>
-                    <h3 class="fw-bold">What we can do for you</h3>
+                    <p class="fw-bold text-success mb-2" data-aos="zoom-in" data-aos-delay="300" data-aos-once="true">Our Services</p>
+                <h3 class="fw-bold" data-aos="zoom-in" data-aos-delay="500" data-aos-once="true">What we can do for you</h3>
                 </div>
             </div>
         <div class="container py-5">
             <div class="mx-auto" style="max-width: 900px;">
                 <div class="row row-cols-1 row-cols-md-2 d-flex justify-content-center">
-                    <div class="col mb-4">
+                    <div class="col mb-4" data-aos="fade-right" data-aos-delay="500" data-aos-once="true">
                         <div class="card bg-primary-subtle">
                             <div class="card-body text-center px-4 py-5 px-md-5">
-                                <p class="fw-bold text-primary card-text mb-2">Lightning-Fast Delivery</p>
+                                <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;">
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD2ElEQVR4nO2Y+0/TUBTH8RcTf/LP8B9RN9jmI0pMIMb4guAvgL+qUYPBdesYYMBlyEMBE4zPiI8Ef9EA6yoyJhswHSsMI5A4mazlta7HnKsjjLbbGEUD4ZuctL139+Rzz73n3LV5ebva6dKZXbAVlqclIBeVNDXdLmB0m0SwL8QD9YqDc84hOGJzE8N7y2uO9HH/C/BrRITbL0Nwqn4AOvu+QXCWh8WVBLHgDE/asM/cHYJgJKEIaLS6awusTDTbpMqnmJiBZqvyAPakBUS48nY/VD0NwMKyCGoSlkS4+SQAFR1+GST6LG7yC/a+RXAMJLIy+oMAx+sGBb25/0xawOqXIQInqaIBRGIr5CpJQCCpbk4GuBG4pFX1RMFAuydSorgWEPcVLl26yH3ionCxaWj1mV8SyZg+TkgBVIOYiaWZOQBcfjjGHza7DikC4ubH/ZVuWU83DsJAaC6lvb13Cug3E1kBZtLHyQUw2tj3ioCYoeOzgupg+5txqHs7LmsPzvBwvsmrCaAoARQ3DC7oqN4DMsCjNazq8pbc84LRypAortfCskjGagGI6v48JxqtrHNDgGUtXjBYGPBO/pL1CUsiHLNrB8gvS1hzhYPmgf0pgGedQ6Tmqck3NU8SwjORCvlVwyVOyvn++5KeYiplSdKRJklQGMHKdl9K2wMNkyQpLhIHk40dUSwzSvtMTfzfMtMfyq7MZKuVBICeci3LCjUeX1h8sQhnkiQB3HgcIOf1+kK9WUAUOdPXA+KxVdExQiAxOmrCvhtPAlDZOQLBn4l/B5iExOMLlw6LMCYBZjca3mMb9lGvOBlcJsDpmAaAq3uSE8jmxwzFEoSG99i2ds9xGwDciGUE3MwfVsdOBVyrXUDHToygI9s9GPghQm1PGIoaPFBgYci1rmcKvkTETQE2uONQ3jUJJ+o9kG9hyLXiURga2Xj2gAhX0jIMl+6PQSs7Dy8CIrmW3R+F0lZfRkidCiDCFd0dhtK2VL+lbaNQ5PDJIFUBMXII9zooyazswSjUvwvnBFjeNUnglPyWtI2SSCZ/a+9dhAKLe04REJez9WOMDLzyLIyvkHD1eZg8t7DzUNzoyQnwRH16vyfveFbhip1+wUC7axQ/HukpF7wYi5OBJpr9855Ls+QZ2/UUk9MHJX2WfjFyBbTbXnjdt1fxZd5IszPJmeIM0dm1NTM10ex0Lh8JjFr5NVrc1SUtI4tKe+V8s4/PtzK3cgK0aOS30Na/z0iz3gvNfh5n9nwsTmaITkw068H+XAALtfSLPzZYmVsmGzutM7tEvOIMc4Xbar+72rb6DY+AnLrXjnyFAAAAAElFTkSuQmCC">
+                                </div>
+                                <p class="fw-bold text-primary card-text my-2">Lightning-Fast Delivery </p>
                                 <p class="card-title mb-3">We know you're excited to flaunt our trendy styles, and we want you to have them in your hands as quickly as possible! Enjoy our lightning-fast delivery service that ensures your favorite pieces are delivered right to your doorstep in no time.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
+                    <div class="col mb-4" data-aos="fade-left" data-aos-delay="800" data-aos-once="true">
                         <div class="card bg-success-subtle">
                             <div class="card-body text-center px-4 py-5 px-md-5">
-                                <p class="fw-bold text-success card-text mb-2">Sneak Peeks - Be Ahead of the Trend</p>
+                                <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;">
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABaUlEQVR4nO3UwUrDQBAG4LyboOBNoSB4EfUBtF4WIeLJQyPUs5YGQbB68hGiQpuigj2IChVtxYsmVKRFbKEjG9Ky2mBjdnaTwP4whE2h+fgnRNPSHmIUAGP0fPFSGJA3xChAbu+or++Y1cQC251PMCgyb16hoNjBANKgIekfNt4+vMEEoiFFAlGQooHcSBlALqQsYGSkCCAJMbEBw0QBeaMaTHWDhy8nMFHJ/JhEAWnMZik+oOWUYfN+G3r9XuDvre47LNWy8QAtpwyT9pz3UP0uN4JkcfQ6aFIK0GJw09X5EeRvHD3T7D8fiweeuTZM+bjdxgHUO08we7Honddvt+D1y4Hl2pp3XrheAbfb+nMTqMBTtzJsrtgsDe/X248w4yMHjbLNSQGeu3YgLggZFocKfPBXGYRjkas3G6Fx6Cse9z5FSewf6nFRQN6oBnmjGuSNajDWBmWNFgUocsh/UKkDkqStVUtovgF/cGECui++WAAAAABJRU5ErkJggg==">
+                                </div>
+                                <p class="fw-bold text-success card-text my-2">Sneak Peeks - <br /> Be Ahead of the Trend </p>
                                 <p class="card-title mb-3">we cherish our loyal customers, and we want to treat you like the VIPs you are! Get exclusive access to our upcoming collections and new arrivals with our Sneak Peeks service.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col mb-4">
-                        <div class="card bg-info-subtle">
+                        <div class="card bg-info-subtle" data-aos="zoom-out" data-aos-delay="1000" data-aos-once="true">
                             <div class="card-body text-center px-4 py-5 px-md-5">
-                                <p class="fw-bold text-info card-text mb-2">Round-the-Clock Customer Support</p>
+                                <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;">
+                                    <img src="data:image/png;base64,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">
+                                </div>
+                                <p class="fw-bold text-info card-text my-2">Round-the-Clock <br /> Customer Support </p>
                                 <p class="card-title mb-3">we are always here for you! Our dedicated customer support team is available 24/7 to assist with any inquiries, concerns, or style advice you may need. Whether you have questions about sizing, product details, or order status, feel free to reach out to us anytime. </p>
                             </div>
                         </div>
@@ -105,12 +118,12 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <p class="fw-bold text-success mb-2">Contacts</p>
-                    <h2 class="fw-bold">How you can reach us</h2>
+                    <p class="fw-bold text-success mb-2" data-aos="zoom-out" data-aos-delay="300" data-aos-once="true">Contacts</p>
+                <h2 class="fw-bold" data-aos="zoom-out" data-aos-delay="600" data-aos-once="true">How you can reach us</h2>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
-                <div class="col-md-6 col-xl-4">
+                <div class="col-md-6 col-xl-4" data-aos="zoom-in" data-aos-delay="2400" data-aos-once="true">
                     <div>
                         <form method="post" asp-action="Index" class="p-3 p-xl-4" method="post" data-bs-theme="light">
                             <div class="mb-3">
@@ -119,24 +132,25 @@
                             </div>
                         <input type="hidden" asp-for="Feedback.ApplicationUserId" />
 
-                        <div><button type="submit" class="btn btn-success  w-100" >Send </button></div>
+                        <div><button type="submit" class="btn btn-primary  w-100" >Send </button></div>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-4 col-xl-4 d-flex justify-content-center justify-content-xl-start">
                     <div class="d-flex flex-wrap flex-md-column justify-content-md-start align-items-md-start h-100">
-                        <div class="d-flex align-items-center p-3">
-                        <div class="bg-success  bs-icon-md bs-icon-circle bs-icon-success shadow d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon bs-icon-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="white" viewBox="0 0 16 16" class="bi bi-telephone">
-                                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
-                                </svg></div>
-                            <div class="px-2">
-                                <h6 class="fw-bold mb-0">Phone</h6>
-                                <p class="text-muted mb-0">+212 666666666</p>
+                        <div class="d-flex align-items-center p-3" data-aos="fade-left" data-aos-delay="800" data-aos-once="true">
+                            <div class="bg-primary  bs-icon-md bs-icon-circle bs-icon-success shadow d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon bs-icon-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="white" viewBox="0 0 16 16" class="bi bi-telephone">
+                                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
+                                    </svg>
                             </div>
+                                <div class="px-2">
+                                    <h6 class="fw-bold mb-0">Phone</h6>
+                                    <p class="text-muted mb-0">+212 666666666</p>
+                                </div>
                         </div>
-                        <div class="d-flex align-items-center p-3">
-                        <div class="bg-success  bs-icon-md bs-icon-circle bs-icon-success shadow d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon bs-icon-md">
+                        <div class="d-flex align-items-center p-3" data-aos="fade-left" data-aos-delay="1300" data-aos-once="true">
+                        <div class="bg-primary  bs-icon-md bs-icon-circle bs-icon-success shadow d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon bs-icon-md">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="white" viewBox="0 0 16 16" class="bi bi-envelope">
                                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"></path>
                                 </svg></div>
@@ -145,8 +159,8 @@
                                 <p class="text-muted mb-0">Test@gmail.ma</p>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center p-3">
-                        <div class="bg-success bs-icon-md bs-icon-circle bs-icon-success shadow d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon bs-icon-md">
+                    <div class="d-flex align-items-center p-3" data-aos="fade-left" data-aos-delay="1700" data-aos-once="true">
+                        <div class="bg-primary bs-icon-md bs-icon-circle bs-icon-success shadow d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon bs-icon-md">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="white" viewBox="0 0 16 16" class="bi bi-pin">
                                     <path d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354zm1.58 1.408-.002-.001.002.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a4.922 4.922 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a4.915 4.915 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.775 1.775 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14c.06.1.133.191.214.271a1.78 1.78 0 0 0 .37.282z"></path>
                                 </svg>
@@ -161,3 +175,9 @@
             </div>
         </div>
     </section>
+
+@section Scripts{
+    <script>
+        AOS.init();
+    </script>
+}

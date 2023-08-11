@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/CustomStyle.css" />
     <link rel="icon" href="~/images/logo/CasualDad.ico" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -108,9 +110,11 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
- 
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
