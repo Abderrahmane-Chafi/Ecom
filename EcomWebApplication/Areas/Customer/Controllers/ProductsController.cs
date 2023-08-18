@@ -22,7 +22,7 @@ namespace EcomWebApplication.Areas.Customer.Controllers
         }
         public IActionResult Index(int? page, List<string> BrandFilter, List<string> CategoryFilter, double price)
         {
-            int pageSize = 15; // Number of products to display per page
+            int pageSize = 9; // Number of products to display per page
             int pageNumber = page ?? 1; // Current page number
             var ProductsList = _UnitOfWork.Product.GetAll(u=>u.status=="Available", includeProperties: "Brand,Category");
 
@@ -93,8 +93,8 @@ namespace EcomWebApplication.Areas.Customer.Controllers
                 _UnitOfWork.Save();
                 TempData["success"] = "Product added succesfuly to cart!";
 
-                //HttpContext.Session.SetInt32(SD.SessionCart,
-                //    _UnitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
+                HttpContext.Session.SetInt32(SD.SessionCart,
+                    _UnitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
 
             }
             else

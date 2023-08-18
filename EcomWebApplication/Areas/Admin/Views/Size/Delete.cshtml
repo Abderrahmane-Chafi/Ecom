@@ -6,10 +6,15 @@
             <h2 class="text-primary">Delete Size</h2>
             <hr />
         </div>
-        @*<div asp-validation-summary="All"></div>*@
-        <div class="mb-3">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" disabled />
+        <div class="row">
+            <div class="mb-3 col-6">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" disabled/>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="type"></label>
+                <input asp-for="type" class="form-control" disabled />
+            </div>
         </div>
         <button type="submit" class="btn btn-danger" style="width:150px">Remove</button>
         <a asp-controller="Size" asp-action="Index" class="btn btn-secondary" style="">

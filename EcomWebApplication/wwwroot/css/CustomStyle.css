@@ -25,3 +25,22 @@
 #tblData_wrapper {
     overflow-x: auto;
 }
+@media (max-width: 767px) {
+    /* Hide elements with AOS animations on mobile devices */
+    [data-aos] {
+        opacity: 1 !important; /* Make sure the element is visible */
+        transform: none !important; /* Remove any transformations */
+    }
+}
+
+/* Default height for screens larger than smartphones */
+.product-image {
+    height: 330px;
+}
+
+/* Override height for smartphones */
+@media (max-width: 767px) {
+    .product-image {
+        height: 250px;
+    }
+}

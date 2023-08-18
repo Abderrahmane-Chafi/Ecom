@@ -73,8 +73,12 @@ namespace EcomWebApplication.Areas.Admin.Controllers
             else
             {
                 //Update product
-                productVM.product = _UnitOfWork.Product.GetFirstOrDefault(u => u.Id == Id);
+                productVM.product = _UnitOfWork.Product.GetFirstOrDefault(u => u.Id == Id,includeProperties:"Category");
                 productVM.productDetails = _UnitOfWork.ProductDetails.GetAll(u => u.ProductId == productVM.product.Id,includeProperties:"Sizes").ToList();
+                if (productVM.product.Category.Name == "Shoes")
+                    productVM.sizes = _UnitOfWork.Sizes.GetAll(s => s.type == "Shoes");
+                else
+                    productVM.sizes = _UnitOfWork.Sizes.GetAll().Where(s => s.type == "Clothing").ToList();
                 List<Sizes> NotIncluded = new List<Sizes>();
                 foreach (var item in productVM.sizes)
                 {
@@ -193,9 +197,13 @@ namespace EcomWebApplication.Areas.Admin.Controllers
                 }
                 else
                 {
+                    var currentCategory = _UnitOfWork.Category.GetFirstOrDefault(u => u.Id == obj.product.CategoryId);
                     _UnitOfWork.Product.Update(obj.product);
+                    if(currentCategory.Name== "Shoes")
+                        obj.sizes = _UnitOfWork.Sizes.GetAll(s => s.type == "Shoes");
+                    else
+                        obj.sizes = _UnitOfWork.Sizes.GetAll().Where(s => s.type == "Clothing").ToList();
                     List<int> checkedIds = new List<int>();
-                    obj.sizes = _UnitOfWork.Sizes.GetAll();
                     foreach (var item in obj.sizes)
                     {
                         string checkboxName = $"MyCheckboxes_{item.Id}";
@@ -264,6 +272,19 @@ namespace EcomWebApplication.Areas.Admin.Controllers
             return Json(new { success = true, message = "Delete Successful" });
 
         }
+        [HttpGet]
+        public IActionResult GetSizesByCategory(int categoryId)
+        {
+            Category CategoryFromDb = _UnitOfWork.Category.GetFirstOrDefault(u => u.Id == categoryId);
+            var sizes = _UnitOfWork.Sizes.GetAll();
+            if (CategoryFromDb.Name=="Shoes")
+                 sizes = _UnitOfWork.Sizes.GetAll().Where(s=>s.type == "Shoes").ToList();
+            else
+                sizes = _UnitOfWork.Sizes.GetAll().Where(s => s.type == "Clothing").ToList();
+
+            return Json(sizes);
+        }
+
         #endregion
     }
 }

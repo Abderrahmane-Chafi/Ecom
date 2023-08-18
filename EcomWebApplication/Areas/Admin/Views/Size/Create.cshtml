@@ -1,16 +1,28 @@
-﻿@model Ecom.Models.Sizes
+﻿@model Ecom.Models.ViewModels.SizeVM
 
 <form method="post">
+    <input asp-for="size.Id" class="form-control" hidden />
+
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Create Size</h2>
             <hr />
         </div>
-        <div class="mb-3">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="row">
+            <div class="mb-3 col-6">
+                <label asp-for="size.Name"></label>
+                <input asp-for="size.Name" class="form-control" />
+                <span asp-validation-for="size.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="size.type"></label>
+                <select asp-for="size.type" asp-items="@Model.SizeTypes" class="form-select">
+                    <option disabled selected>==Select size==</option>
+                </select>
+                <span asp-validation-for="size.type" class="text-danger"></span>
+            </div>
         </div>
+        
         <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
         <a asp-controller="Size" asp-action="Index" class="btn btn-secondary" style="">
             Back to list

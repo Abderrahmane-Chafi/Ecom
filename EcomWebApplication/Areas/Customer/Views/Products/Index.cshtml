@@ -4,66 +4,71 @@
 @model Ecom.Models.ViewModels.ProductsVM
 
 <div class="row mt-5 m-0">
-    <div class="col-lg-3 col-md-3 border-dark mb-4 accordion" style="height:-webkit-fit-content" id="accordionExample">
+    <div class="col-lg-3 col-md-3 card border border-dark mb-4 accordion p-0" style="height:-webkit-fit-content" id="accordionExample">
         <form id="form" method="get" asp-controller="Products" asp-action="Index">
-            <h4 class="fw-bold mt-3">Filters :</h4>
+            <div class="card-header text-center">
+                <h4 class="fw-bold mt-3">Filters</h4>
 
-            <div class="accordion-item ">
-                <h5 id="Brand headingOne" class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Brands
-                    </button>
-                </h5>
-                <div id="collapseOne" class="row accordion-collapse collapse show w-100 m-0" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-                    <div id="DBrand" class="form-check row  accordion-body">
+            </div>
+            <div class="card-body">
+                <div class="accordion-item ">
+                    <h5 id="Brand headingOne" class="accordion-header">
+                        <button class="accordion-button collasped" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Brands
+                        </button>
+                    </h5>
+                    <div id="collapseOne" class="row accordion-collapse collapse w-100 m-0" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                        <div id="DBrand" class="form-check row  accordion-body">
 
-                        @foreach (var brand in Model.brands)
-                        {
-                            <div class="col-12 m-3">
-                                <input class="form-check-input" type="checkbox" id="@brand.Name" value="@brand.Name" name="BrandFilter" @(Model.SelectedBrandFilters?.Contains(brand.Name) == true ? "checked" : "")>
-                                <label class="form-check-label" style="color:black" for="@brand.Name">@brand.Name</label>
-                            </div>
-                                                    
-                        }
+                            @foreach (var brand in Model.brands)
+                            {
+                                <div class="col-12 m-3">
+                                    <input class="form-check-input" type="checkbox" id="@brand.Name" value="@brand.Name" name="BrandFilter" @(Model.SelectedBrandFilters?.Contains(brand.Name) == true ? "checked" : "")>
+                                    <label class="form-check-label" style="color:black" for="@brand.Name">@brand.Name</label>
+                                </div>
 
+                            }
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <br />
+                <br />
 
-            <div class="accordion-item">
-                <h5 id="Category headingTwo" class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        Category
-                    </button>
-                </h5>
-                <div id="collapseTwo" class="row accordion-collapse collapse show m-0" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
-                    <div id="DCategory" class="form-check  accordion-body">
-                        @foreach (var category in Model.categories)
-                        {
-                            <div class="col-12 m-3">
-                            <input class="form-check-input" type="checkbox" id="@category.Name" value="@category.Name" name="CategoryFilter" @(Model.SelectedCategoriesFilters?.Contains(category.Name) == true ? "checked" : "")>
-                            <label class="form-check-label" style="color:black" for="@category.Name">@category.Name</label>
-                            </div>
-                        }
+                <div class="accordion-item">
+                    <h5 id="Category headingTwo" class="accordion-header">
+                        <button class="accordion-button collasped" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Category
+                        </button>
+                    </h5>
+                    <div id="collapseTwo" class="row accordion-collapse collapse m-0" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
+                        <div id="DCategory" class="form-check  accordion-body">
+                            @foreach (var category in Model.categories)
+                            {
+                                <div class="col-12 m-3">
+                                    <input class="form-check-input" type="checkbox" id="@category.Name" value="@category.Name" name="CategoryFilter" @(Model.SelectedCategoriesFilters?.Contains(category.Name) == true ? "checked" : "")>
+                                    <label class="form-check-label" style="color:black" for="@category.Name">@category.Name</label>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <br />
-            <div class="row">
-                <h5 id="Price">Price</h5>
-                <div id="DLocations" class="form-check input-group">
-                    <input asp-for="@Model.Price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                    <span class="input-group-text">MAD</span>
+                <br />
+                <div class="row">
+                    <h5 id="Price">Price</h5>
+                    <div id="DLocations" class="form-check input-group">
+                        <input asp-for="@Model.Price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">MAD</span>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row mt-2">
+                    <button type="submit" class="btn btn-primary w-100 mb-1" id="filterButton">Filter</button>
+                    <a class="btn btn-danger w-100" asp-controller="Products" asp-action="Index">Reset Filters</a>
                 </div>
             </div>
-
-            <br />
-            <div class="row mt-2">
-                <button type="submit" class="btn btn-primary w-100 mb-1" id="filterButton">Filter</button>
-                <a class="btn btn-danger w-100" asp-controller="Products" asp-action="Index">Reset Filters</a>
-            </div>
+            
         </form>
 
     </div>
@@ -74,11 +79,11 @@
             <div class="row">
                 @foreach (var item in Model.PagedProducts)
                 {
-                    
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-2">
                             <a  asp-area="Customer" asp-action="Details" asp-route-ProductId="@item.Id">
                                 <div class="row ">
-                                    <div class="col-12" style="height:350px">
+                                <div class="col-12 product-image">
                                         <img src="@item.ImageUrl" class="w-100 h-100">
                                     </div>
                                     <div class="col-12">
@@ -88,7 +93,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                    </div>
                        
                     
                 }

@@ -19,5 +19,8 @@ namespace Ecom.Utility
 		public const string StatusShipped = "Shipped";
 		public const string StatusCancelled = "Cancelled";
 
-	}
+        public const string SessionCart = "SessionShoppingCart";
+
+
+    }
 }

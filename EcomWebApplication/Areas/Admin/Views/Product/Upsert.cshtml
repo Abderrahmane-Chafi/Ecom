@@ -5,7 +5,7 @@
     <input asp-for="product.ImageUrl" hidden/>
     <input asp-for="product.ImageUrl1" hidden />
 
-    <div class="row my-5">
+    <div class="row my-5 p-2">
         <div class="col-10">
             <div class="border p-3 mt-4 row">
                 <div class="col-12 pb-2">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="mb-3 col-6">
                     <label asp-for="product.CategoryId"></label>
-                    <select asp-for="product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
+                    <select id="categorySelect" asp-for="product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
                         <option disabled selected>==Select Category==</option>
                     </select>
                     <span asp-validation-for="product.CategoryId" class="text-danger"></span>
@@ -73,8 +73,8 @@
                             Sizes
                         </div>
 
-                        <div class="card-body row">
-                            @foreach (var item in Model.sizes)
+                        <div id="sizesContainer" class="card-body row">
+                            @*@foreach (var item in Model.sizes)
                             {
                                 <div class="col-4">
                                     <input class="form-check-input" type="checkbox" id="@item.Name" value="true" name="MyCheckboxes_@item.Id">
@@ -83,7 +83,7 @@
                                 </label>
                                 </div>
                                 
-                            }
+                            }*@
                         </div>
                     </div>
                 }
@@ -125,11 +125,11 @@
                 <div class="col-12">
                     @if (Model.product.Id != 0)
                     {
-                        <button type="submit" class="btn btn-primary" style="width:150px" >Update</button>
+                        <button type="submit" class="btn btn-primary mb-1" style="" >Update</button>
                     }
                     else
                     {
-                        <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
+                        <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="">Create</button>
                     }
                     <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="">
                         Back to list
@@ -138,12 +138,13 @@
         
             </div>
         </div>
-        <div class="col-2 mt-4">
-            <img class="mb-1" src="@Model.product.ImageUrl"
-                style="width: 100%;border-radius:5px;border:1px solid #bbb9b9"/>
-                <img src="@Model.product.ImageUrl1"
-                style="width: 100%;border-radius:5px;border:1px solid #bbb9b9"/>
+        <div class="col-2 ">
+            <img class="mb-1 " src="@Model.product.ImageUrl"
+                 style="width: 100%;border-radius:5px;border:1px solid #bbb9b9" />
+            <img class="" src="@Model.product.ImageUrl1"
+                 style="width: 100%;border-radius:5px;border:1px solid #bbb9b9" />
         </div>
+        
     </div>
 
 </form>
@@ -174,7 +175,28 @@
         }
     </script>
     <script src="~/js/Delete.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#categorySelect').change(function () {
+                var categoryId = $(this).val();
+                var sizesContainer = $('#sizesContainer');
 
+                sizesContainer.empty(); // Clear previous sizes
+
+                $.get('/Admin/Product/GetSizesByCategory', { categoryId: categoryId }, function (data) {
+                    data.forEach(function (size) {
+                        console.log(data);
+                        var sizeCheckbox = '<div class="col-4 ' + size.type + '">' +
+                            '<input class="form-check-input size-checkbox" type="checkbox" id="' + size.name + '" value="true" name="MyCheckboxes_' + size.id + '">' +
+                            '<label class="form-check-label" style="color:black" for="' + size.name + '">' + size.name + '</label>' +
+                            '</div>';
+                        sizesContainer.append(sizeCheckbox);
+                    });
+                });
+            });
+        });
+
+    </script>
 }
 
 

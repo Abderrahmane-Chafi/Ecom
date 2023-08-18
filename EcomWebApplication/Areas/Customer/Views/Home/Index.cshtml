@@ -100,18 +100,23 @@
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-sm-flex justify-content-sm-center">
-                @foreach (var item in Model.Feedbacks)
-                {
-                <div class="col mb-4">
-                    <div class=" border rounded border-0 bg-body-tertiary d-flex flex-column align-items-center align-items-sm-start border-light p-4">
-
-                        <p class="fw-bold text-primary mb-0">@item.ApplicationUser.Name</p>
-                        <p class="">@item.Comment</p>
-                    </div>
+            <div class="owl-carousel owl-theme">
+                <div class="owl-carousel">
+                    @foreach (var item in Model.Feedbacks)
+                    {
+                        <div class="owl-slide col mb-4">
+                            <div class="border rounded border-0 bg-body-tertiary d-flex flex-column align-items-center align-items-sm-start border-light p-4">
+                                <p class="fw-bold text-primary mb-0">@item.ApplicationUser.Name</p>
+                                <p class="">@item.Comment</p>
+                            </div>
+                        </div>
+                    }
                 </div>
-            }                      
-                
+
             </div>
+
+
+        </div>
         </div>
     </section>
     <section class="py-5">
@@ -177,7 +182,25 @@
     </section>
 
 @section Scripts{
+
     <script>
-        AOS.init();
+        if (window.innerWidth < 768) {
+          AOS.init({ disable: true }); // Disable AOS library
+        }
+        else
+            AOS.init();
     </script>
+
+    <!-- Initialize Slick Carousel after everything has loaded -->
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                items: 1, // Display only one item at a time
+                // Other Owl Carousel options
+            });
+        });
+    </script>
+
+
+
 }

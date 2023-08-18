@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="~/css/CustomStyle.css" />
     <link rel="icon" href="~/images/logo/CasualDad.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" />
 
 
 </head>
@@ -37,7 +38,11 @@
                             <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item"><a class="nav-link"  asp-area="Customer" asp-controller="Products" asp-action="Index">Products</a></li>
-                        <Li class="nav-item"> <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index"><i class="bi bi-cart"></i> </a></Li>
+                        <Li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                @await Component.InvokeAsync("ShoppingCart")
+                            </a>
+                        </Li>
                         @if (SignInManager.IsSignedIn(User))
                         {   
                             <li class="nav-item">
@@ -106,6 +111,7 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/js/bold-and-bright.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -114,6 +120,7 @@
 
     <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
