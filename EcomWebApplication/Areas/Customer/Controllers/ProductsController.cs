@@ -22,7 +22,7 @@ namespace EcomWebApplication.Areas.Customer.Controllers
         }
         public IActionResult Index(int? page, List<string> BrandFilter, List<string> CategoryFilter, double price)
         {
-            int pageSize = 9; // Number of products to display per page
+            int pageSize = 12; // Number of products to display per page
             int pageNumber = page ?? 1; // Current page number
             var ProductsList = _UnitOfWork.Product.GetAll(u=>u.status=="Available", includeProperties: "Brand,Category");
 
