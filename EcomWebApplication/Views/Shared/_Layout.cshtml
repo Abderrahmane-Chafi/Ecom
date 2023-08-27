@@ -38,11 +38,19 @@
                             <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item"><a class="nav-link"  asp-area="Customer" asp-controller="Products" asp-action="Index">Products</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Customer/Home/Index#contactDiv">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="AboutUs" asp-action="Index">About us</a>
+                        </li>
+
                         <Li class="nav-item">
                             <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
                                 @await Component.InvokeAsync("ShoppingCart")
                             </a>
                         </Li>
+
                         @if (SignInManager.IsSignedIn(User))
                         {   
                             <li class="nav-item">
@@ -121,6 +129,8 @@
     <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
+
+
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
