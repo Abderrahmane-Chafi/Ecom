@@ -55,14 +55,14 @@
                         {   
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">
-                                    Manage Order
+                                    Orders
                                 </a>
                             </li>
                         }
                         @if (User.IsInRole(SD.Role_Admin))
                         {
                             <li class="nav-item dropdown">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Content management </a>                                
+                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Manage</a>                                
                                 <div class="dropdown-menu" >
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Brand" asp-action="Index">Brand</a>
